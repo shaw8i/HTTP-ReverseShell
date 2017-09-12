@@ -1,10 +1,15 @@
 # HTTP-ReverseShell
 
 Description:
+
 Python HTTP Reverse Shell
 
-Requires:
+Requires:	
+
 http.server
+
 requests
+
 cgi
+
 subprocess

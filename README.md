@@ -2,7 +2,7 @@
 
 # Description:
 
-Python HTTP Reverse Shell
+Python3 HTTP Reverse Shell
 
 # Requires:	
 

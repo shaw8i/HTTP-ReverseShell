@@ -1,5 +1,7 @@
 # HTTP-ReverseShell
 
+Python 3
+
 # Requires:	
 
 http.server
@@ -13,8 +15,6 @@ subprocess
 os
 
 # Description:
-
-Python 3 HTTP Reverse Shell
 
 NOTE: to grab a file write "grab <FileName.ext>"  ------>eg. grab test.txt
 

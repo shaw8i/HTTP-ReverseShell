@@ -2,7 +2,7 @@
 
 # Description:
 
-Python3 HTTP Reverse Shell
+Python 3 HTTP Reverse Shell
 
 NOTE: to grab a file write "grab <FileName.ext>"  ------>eg. grab test.txt
 
@@ -19,3 +19,5 @@ requests
 cgi
 
 subprocess
+
+os

